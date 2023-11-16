@@ -36,3 +36,18 @@ jobs:
           with:
             name: code-coverage-report
 
+  download-artifact:
+    needs: check-bats-version
+    runs-on: ubuntu-latest
+    steps:
+        - name: check out repository
+          uses: actions/checkout@v4
+
+        - name: Download a single artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: code-coverage-report
+        - run: |
+            ls -la
+            cat output.json
+        
