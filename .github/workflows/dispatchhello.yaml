@@ -1,0 +1,15 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+    workflow_dispatch:
+        inputs:
+            mymessage:
+                description: " this is my message"
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+        - run: |
+            echo "hello from github"
+            echo {{ inputs.mymessage }}
+
