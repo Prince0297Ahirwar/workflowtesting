@@ -14,8 +14,9 @@ jobs:
             echo ${{ inputs.mymessage }}
         - run: |
             ls
-        - run:
+        - run: |
             echo ${{ github.workspace}}
-            echo "$GITHUB_WORKSPACE"
+        - run: |
+            echo  $GITHUB_WORKSPACE
 
 
