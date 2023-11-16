@@ -12,4 +12,7 @@ jobs:
         - run: |
             echo "hello from github"
             echo ${{ inputs.mymessage }}
+        - run: |
+            ls
+            
 
