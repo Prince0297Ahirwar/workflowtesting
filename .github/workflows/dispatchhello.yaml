@@ -11,5 +11,5 @@ jobs:
     steps:
         - run: |
             echo "hello from github"
-            echo {{ inputs.mymessage }}
+            echo ${{ inputs.mymessage }}
 
