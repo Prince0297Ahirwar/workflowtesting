@@ -1,0 +1,8 @@
+{
+    "fruit": "apple",
+    "color": "red",
+    "quantity": 3,
+    "isFresh": true,
+    "tags": ["healthy", "snack", "organic"]
+ }
+  
