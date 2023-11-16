@@ -9,6 +9,8 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
+        - name: My first step - check out repository
+          uses: actions/checkout@v4
         - run: |
             echo "hello from github"
             echo ${{ inputs.mymessage }}
