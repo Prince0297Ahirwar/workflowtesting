@@ -1,0 +1,18 @@
+name: download-github-artifacts
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+    workflow_dispatch:
+        inputs:
+            mymessage:
+                description: " this is my message"
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+        - name: My first step - check out repository
+          uses: actions/checkout@v4
+        - name: Download a single artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: code-coverage-report
+
