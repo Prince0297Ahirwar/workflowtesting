@@ -1,57 +1,19 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
-on:
-    workflow_dispatch:
-        inputs:
-            mymessage:
-                description: " this is my message"
+on: workflow_dispatch
 jobs:
-  check-bats-version:
+  test:
     runs-on: ubuntu-latest
     steps:
-        - name: My first step - check out repository
+        - name: My first step -
           uses: actions/checkout@v4
-        - run: |
-            echo "hello from github"
-            echo ${{ inputs.mymessage }}
-        - run: |
-            ls
-        - run: |
-            echo ${{ github.workspace}}
-        - run: |
-            echo  $GITHUB_WORKSPACE
-        - name: Archive production artifacts
-          uses: actions/upload-artifact@v3
+        - name: JSON to variables
+          uses: rgarcia-phi/json-to-variables@v1.1.0
           with:
-            name: artifactsmulti
-            path: |
-               artifacts
-        - name: Archive code coverage results
-          uses: actions/upload-artifact@v3
-          with:
-            name: code-coverage-report
-            path: outputs/output.json
-
-  download-artifact:
-    needs: check-bats-version
-    runs-on: ubuntu-latest
-    steps:
-        - name: check out repository
-          uses: actions/checkout@v4
-
-        - name: Download a single artifact
-          uses: actions/download-artifact@v3
-          with:
-            name: code-coverage-report
-        - run: |
-            ls -la
-            cat output.json
-
-        - name: Download a folder artifact
-          uses: actions/download-artifact@v3
-          with:
-              name: artifactsmulti
-    
-        - run: |
-            ls -la
-        
+            filename: "{a:b,c:d,e:f}"
+            prefix: test
+            masked: true
+        - name: outputs
+          run: |
+              echo "${{ env.test_a }},${{ env.test_c }},${{ env.test_e }}"
+                
